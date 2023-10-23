@@ -71,11 +71,11 @@ declare module '@rocket.chat/ui-contexts' {
 		};
 		'register-secret-url': {
 			pathname: `/register/${string}`;
-			pattern: '/register/:hash';
+			pattern: '/register/:secret';
 		};
 		'invite': {
-			pathname: `/invite/${string}`;
-			pattern: '/invite/:hash';
+			pathname: `/invite/${string}${`/${string}` | ''}`;
+			pattern: '/invite/:hash/:secret?';
 		};
 		'conference': {
 			pathname: `/conference/${string}`;
@@ -186,12 +186,12 @@ router.defineRoutes([
 		element: appLayout.wrap(<CMSPage page='Layout_Legal_Notice' />),
 	},
 	{
-		path: '/register/:hash',
+		path: '/register/:secret',
 		id: 'register-secret-url',
 		element: appLayout.wrap(<SecretURLPage />),
 	},
 	{
-		path: '/invite/:hash',
+		path: '/invite/:hash/:secret?',
 		id: 'invite',
 		element: appLayout.wrap(<InvitePage />),
 	},
