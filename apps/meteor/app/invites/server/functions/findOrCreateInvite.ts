@@ -11,12 +11,15 @@ import { settings } from '../../../settings/server';
 import { getURL } from '../../../utils/server/getURL';
 
 function getInviteUrl(invite: Omit<IInvite, '_updatedAt'>) {
+	const secretRegistration =
+		settings.get('Accounts_RegistrationForm') === 'Secret URL' ? `/${settings.get('Accounts_RegistrationForm_SecretURL')}` : '';
+
 	const { _id } = invite;
 
 	const useDirectLink = settings.get<string>('Accounts_Registration_InviteUrlType') === 'direct';
 
 	return getURL(
-		`invite/${_id}`,
+		`invite/${_id}${secretRegistration}`,
 		{
 			full: useDirectLink,
 			cloud: !useDirectLink,

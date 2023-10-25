@@ -9,9 +9,9 @@ import FormSkeleton from './template/FormSkeleton';
 import HorizontalTemplate from './template/HorizontalTemplate';
 
 const SecretRegisterForm = ({ setLoginRoute }: { setLoginRoute: DispatchLoginRouter }): ReactElement => {
-	const hash = useRouteParameter('hash');
+	const secret = useRouteParameter('secret');
 
-	const { data: valid, isSuccess } = useCheckRegistrationSecret(hash);
+	const { data: valid, isSuccess } = useCheckRegistrationSecret(secret);
 
 	if (isSuccess && !valid) {
 		return <SecretRegisterInvalidForm />;

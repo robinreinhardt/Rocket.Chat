@@ -20,7 +20,7 @@ export const RegisterSecretPageRouter = ({
 
 	const isPublicRegistration = registrationMode === 'Public';
 	const isRegistrationAllowedForSecret = registrationMode === 'Secret URL';
-	const isRegistrationDisabled = registrationMode === 'Disabled' || (origin === 'register' && isRegistrationAllowedForSecret);
+	const isRegistrationDisabled = registrationMode === 'Disabled';
 
 	if (origin === 'secret-register' && !isRegistrationAllowedForSecret) {
 		return <SecretRegisterInvalidForm />;
